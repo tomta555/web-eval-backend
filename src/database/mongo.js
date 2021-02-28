@@ -6,7 +6,7 @@ const options = {
   useUnifiedTopology: true 
 };
 
-const url = 'mongodb+srv://finalexam:D49gpWJzLmODzT4vfinal-exam-web-eval.4ctqp.mongodb.net/webeval?retryWrites=true&w=majority&authSource=admin'
+const url = 'mongodb+srv://finalexam:D49gpWJzLmODzT4v@final-exam-web-eval.4ctqp.mongodb.net/webeval?retryWrites=true&w=majority&authSource=admin'
 
 mongoose
     .connect(url, options)
