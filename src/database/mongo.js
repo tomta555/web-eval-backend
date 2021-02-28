@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 
 const options = {
   useNewUrlParser: true,
-  reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 500,
   connectTimeoutMS: 10000,
+  useUnifiedTopology: true 
 };
 
-const url = 'mongodb+srv://finalexam:finalexam1234@eaxm-data.4ctqp.mongodb.net/webeval?retryWrites=true&w=majority&authSource=admin'
+const url = 'mongodb+srv://finalexam:D49gpWJzLmODzT4vfinal-exam-web-eval.4ctqp.mongodb.net/webeval?retryWrites=true&w=majority&authSource=admin'
 
 mongoose
     .connect(url, options)
