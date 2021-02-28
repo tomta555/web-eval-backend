@@ -7,7 +7,7 @@ const options = {
   connectTimeoutMS: 10000,
 };
 
-const url = 'mongodb://localhost:27017/webeval?authSource=admin'
+const url = 'mongodb+srv://finalexam:<password>@eaxm-data.4ctqp.mongodb.net/webeval?retryWrites=true&w=majority&authSource=admin'
 
 mongoose
     .connect(url, options)
