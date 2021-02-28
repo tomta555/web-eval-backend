@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json({ extended: false }));
 app.use('/api', routes);
 app.get('/', (req, res) => {
-    res.send('GET Api');
+    res.send('Final exam scheduling system (261942) Backend API');
 });
 
 app.all('*', (req, res) => {
