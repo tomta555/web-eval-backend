@@ -2,6 +2,29 @@ const { sendSuccessResponse } = require('../helper/api-response');
 const Student = require('../models/student');
 const Examslot = require('../models/examslot');
 const Regexamslot = require('../models/regexamslot');
+const Studentpack = require("../models/studentpack");
+
+exports.addStudentpack = async (req, res, next) => {
+  const {
+    std_id,
+    reg_table,
+    sched_table,
+  } = req.body;
+  try {
+
+
+      const student = await Studentpack.create({
+        std_id,
+        reg_table,
+        sched_table
+      });
+  
+      return sendSuccessResponse(res, student);
+    } catch (error) {
+      next(error);
+    }
+};
+
 
 exports.addStudent = async (req, res, next) => {
     const {
