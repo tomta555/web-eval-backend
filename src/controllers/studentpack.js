@@ -9,6 +9,7 @@ exports.getTimetableByStdId = async (req, res, next) => {
 
     try {
         const student = await Studentpack.findOne({std_id: hashedStudentId})
+        .select('std_id reg_table sched_table')
         if (student){
             return sendSuccessResponse(res, student);
         }
