@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // app.use('/public', express.static(path.join(__dirname,'/public')))
-app.use(cors({origin: '*'}))
+app.use(cors({origin: 'null'}))
 app.use(express.json({ extended: false }));
 app.use('/api', routes);
     
