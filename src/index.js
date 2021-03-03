@@ -9,17 +9,15 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // app.use('/public', express.static(path.join(__dirname,'/public')))
-app.use(cors())
+app.use(cors({origin: '*'}))
 app.use(express.json({ extended: false }));
 app.use('/api', routes);
     
 app.get('/', (req, res) => {
     res.send('Final exam scheduling system (261942) Backend API');
-    res.setHeader('Access-Control-Allow-Origin', 'https://affectionate-roentgen-01a06a.netlify.app');
 });
 
 app.all('*', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://affectionate-roentgen-01a06a.netlify.app');
     const error = new Error(`${req.method} ${req.path} not found.`);
     error.code = 404;
     throw error;
