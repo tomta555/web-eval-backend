@@ -15,17 +15,18 @@ app.use('/api', routes);
     
 app.get('/', (req, res) => {
     res.send('Final exam scheduling system (261942) Backend API');
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://affectionate-roentgen-01a06a.netlify.app');
 });
 
 app.all('*', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://affectionate-roentgen-01a06a.netlify.app');
     const error = new Error(`${req.method} ${req.path} not found.`);
     error.code = 404;
     throw error;
 });
 
 app.use((error, req, res, next) => {
+    
     console.log(error);
     const code = error.code || 500;
     const message = error.message;
