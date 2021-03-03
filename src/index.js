@@ -10,12 +10,7 @@ const port = process.env.PORT || 8000;
 
 // app.use('/public', express.static(path.join(__dirname,'/public')))
 app.use((req, res, next) => {
-    const ALLOW_ORIGIN = [ 'https://affectionate-roentgen-01a06a.netlify.app', 'http://localhost:8000']                     
-    const ORIGIN = req.headers.origin 
-                                
-    if (ALLOW_ORIGIN.includes(ORIGIN)) {
-        res.header('Access-Control-Allow-Origin', ORIGIN)
-    }
+    res.header('Access-Control-Allow-Origin', 'https://affectionate-roentgen-01a06a.netlify.app')
     res.header('Access-Control-Allow-Methods','POST, GET, PUT, PATCH, DELETE, OPTIONS')
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
     next()
