@@ -3,6 +3,7 @@ const Student = require("../models/student");
 const Examslot = require("../models/examslot");
 const Regexamslot = require("../models/regexamslot");
 const bcrypt = require("bcrypt");
+const axios = require('axios')
 
 exports.getStudentTimetableByStdId = async (req, res, next) => {
   const studentId = req.params.stdid;
@@ -92,3 +93,52 @@ exports.getStudentTimetable = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getOauthToken = async (req, res, next) => {
+  const code_auth = req.params.code
+
+  const data = qs.stringify({
+    code: code_auth,
+    redirect_uri: "http://localhost:8000/timetable",
+    client_id: "TG48TWd9TqUgcSMSh5kKva4hepaSnEH45fQHueRu",
+    client_secret: "ua4sgC2d7h9BudXTNX3DWyXnTZm6ccycq1sufPaP",
+    grant_type: "authorization_code",
+  });
+
+  const config = {
+    method: "post",
+    url: "https://oauth.cmu.ac.th/v1/GetToken.aspx/",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    data: data,
+  };
+  try {
+
+    const token = await axios(config);
+
+    return sendSuccessResponse(res, token);
+  } catch (error) {
+    next(error);
+  }
+}
+
+exports.getStudentId = async (req, res, next) => {
+  const token = req.params.token
+  const config = {
+    method: "get",
+    url: "https://misapi.cmu.ac.th/cmuitaccount/v1/api/cmuitaccount/basicinfo",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  }
+  try {
+
+  const student_id = await axios(config);
+
+  return sendSuccessResponse(res, student_id);
+} catch (error) {
+  next(error);
+}
+
+}
