@@ -12,6 +12,10 @@ const port = process.env.PORT || 8000;
 app.use(cors())
 app.use(express.json({ extended: false }));
 app.use('/api', routes);
+app.use((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+})
+    
 app.get('/', (req, res) => {
     res.send('Final exam scheduling system (261942) Backend API');
 });
@@ -28,6 +32,7 @@ app.use((error, req, res, next) => {
     const message = error.message;
     sendErrorResponse(res, { message: message }, code);
   });
+
 
 app.listen(port, () => {
     console.log(`listening at port ${port}`);
