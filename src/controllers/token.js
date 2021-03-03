@@ -7,7 +7,7 @@ exports.getOauthToken = async (req, res, next) => {
 
   const data = qs.stringify({
     code: code_auth,
-    redirect_uri: "http://localhost:8000/timetable",
+    redirect_uri: "http://https://affectionate-roentgen-01a06a.netlify.app/timetable",
     client_id: "TG48TWd9TqUgcSMSh5kKva4hepaSnEH45fQHueRu",
     client_secret: "ua4sgC2d7h9BudXTNX3DWyXnTZm6ccycq1sufPaP",
     grant_type: "authorization_code",
