@@ -12,15 +12,14 @@ const port = process.env.PORT || 8000;
 app.use(cors())
 app.use(express.json({ extended: false }));
 app.use('/api', routes);
-app.use((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-})
     
 app.get('/', (req, res) => {
     res.send('Final exam scheduling system (261942) Backend API');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 });
 
 app.all('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const error = new Error(`${req.method} ${req.path} not found.`);
     error.code = 404;
     throw error;
