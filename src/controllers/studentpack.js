@@ -1,4 +1,4 @@
-const { sendSuccessResponse, sendErrorResponse, sendNoStdResponse } = require('../helper/api-response');
+const { sendSuccessResponse, sendErrorResponse } = require('../helper/api-response');
 const Studentpack = require("../models/studentpack");
 const bcrypt = require("bcrypt");
 
@@ -14,7 +14,7 @@ exports.getTimetableByStdId = async (req, res, next) => {
             return sendSuccessResponse(res, student);
         }
         else{
-            return sendNoStdResponse(res, {});
+            return sendErrorResponse(res, {});
         }
         
       } catch (error) {
