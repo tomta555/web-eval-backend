@@ -25,7 +25,7 @@ exports.getOauthToken = async (req, res, next) => {
 
     axios(config).then((response) =>{
       const token = response.data.access_token
-
+      console.log(token)
       return sendSuccessResponse(res, {token: token});
     
     })
